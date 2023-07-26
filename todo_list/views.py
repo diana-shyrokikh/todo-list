@@ -21,17 +21,11 @@ class ChangeStatus(View):
 
     @staticmethod
     def get(request, pk):
-        tasks = Task.objects.prefetch_related("tags")
         task = get_object_or_404(Task, pk=pk)
         task.is_done = not task.is_done
-
         task.save()
 
-        context = {
-            "tasks": tasks,
-        }
-
-        return render(request, "todo_list/index.html", context)
+        return redirect("todo_list:index")
 
 
 
