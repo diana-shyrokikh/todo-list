@@ -42,7 +42,7 @@
               <span>
                 <a
                     class="w3-right w3-padding w3-grey"
-                    href=""
+                    href="{% url 'todo_list:change-status' pk=task.id%}"
                     style="text-decoration: none"
                 >
                 Undo
@@ -52,7 +52,7 @@
               <span>
                 <a
                     class="w3-right w3-padding w3-green"
-                    href=""
+                    href="{% url 'todo_list:change-status' pk=task.id%}"
                     style="text-decoration: none"
                 >
                 Complete
