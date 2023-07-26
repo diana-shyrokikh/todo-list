@@ -63,7 +63,7 @@
             {{ tag.name }}
           {% endfor %}
           <a
-              href=""
+              href="{% url 'todo_list:task-update' pk=task.id %}"
               style="text-decoration: none"
               class="w3-text-blue"
           >
