@@ -7,7 +7,12 @@ class Task(models.Model):
     created_at = models.DateField(auto_now_add=True)
     deadline = models.DateField(blank=True, null=True)
     is_done = models.BooleanField(default=False)
-    tags = models.ManyToManyField(to="Tag", related_name="tasks")
+    tags = models.ManyToManyField(
+        to="Tag",
+        related_name="tasks",
+        null=True,
+        blank=True
+    )
 
     class Meta:
         ordering = ["is_done", "-created_at"]
@@ -17,7 +22,7 @@ class Task(models.Model):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=63)
+    name = models.CharField(max_length=63, unique=True)
 
     def __str__(self):
-        return {self.name}
+        return self.name
