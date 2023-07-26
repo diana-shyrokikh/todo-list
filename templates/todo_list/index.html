@@ -10,7 +10,6 @@
     <span>
       <a
         class="w3-right w3-padding w3-blue"
-        style="text-decoration: none"
         href="{% url 'todo_list:task-create' %}"
       >
         Add task
@@ -29,7 +28,6 @@
               <a
                   class="w3-right w3-padding w3-grey"
                   href="{% url 'todo_list:change-status' pk=task.id%}"
-                  style="text-decoration: none"
               >
               Undo
               </a>
@@ -39,7 +37,6 @@
               <a
                   class="w3-right w3-padding w3-green"
                   href="{% url 'todo_list:change-status' pk=task.id%}"
-                  style="text-decoration: none"
               >
               Complete
               </a>
@@ -54,30 +51,39 @@
         </h3>
       </div>
       <div>
-        <p>{{ task.created_at }}</p>
+        <p>Created: {{ task.created_at }}</p>
       </div>
+      {% if task.deadline %}
+        <div>
+          <p class="w3-text-red">Deadline: {{ task.deadline }}</p>
+        </div>
+      {% endif %}
+
       <div>
         <p class="w3-text-grey">
           Tags:
+          {% if not task.tags %}
+            -
+          {% endif %}
           {% for tag in task.tags.all %}
             {{ tag.name }}
           {% endfor %}
           <a
               href="{% url 'todo_list:task-update' pk=task.id %}"
-              style="text-decoration: none"
               class="w3-text-blue"
           >
             Update
           </a>
           <a
               href="{% url 'todo_list:task-delete' pk=task.id %}"
-              style="text-decoration: none"
               class="w3-text-blue"
           >
             Delete
           </a>
         </p>
       </div>
+
+      <hr>
 
     {% endfor %}
 
