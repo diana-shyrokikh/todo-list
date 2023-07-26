@@ -36,6 +36,13 @@ class TaskCreateView(generic.CreateView):
     success_url = reverse_lazy("todo_list:index")
 
 
+class TagListView(generic.ListView):
+    model = Tag
+    context_object_name = "tag_list"
+    template_name = "todo_list/tag_list.html"
+    paginate_by = 5
+
+
 class TagCreateView(generic.CreateView):
     model = Tag
     fields = "__all__"
