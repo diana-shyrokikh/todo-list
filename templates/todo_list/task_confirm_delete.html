@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}
-  <title>Delete Tag | Todo List</title>
+  <title>Delete Task | Todo List</title>
 {% endblock %}
 
 {% block content %}
-  <h1>DELETE {{ tag.name }}?</h1>
+  <h1>DELETE {{ task.name }}?</h1>
   <form action="" method="post">
     {% csrf_token %}
     <span>
@@ -19,7 +19,7 @@
       <a
         class="w3-margin w3-padding w3-green"
         style="text-decoration: none"
-        href="{% url 'todo_list:tag-list' %}"
+        href="{% url 'todo_list:index' %}"
       >
         No
       </a>
