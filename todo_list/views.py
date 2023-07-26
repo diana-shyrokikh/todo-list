@@ -51,13 +51,13 @@ class TagListView(generic.ListView):
     model = Tag
     context_object_name = "tag_list"
     template_name = "todo_list/tag_list.html"
-    paginate_by = 5
 
 
 class TagCreateView(generic.CreateView):
     model = Tag
     fields = "__all__"
     success_url = reverse_lazy("todo_list:tag-list")
+
 
 class TagUpdateView(generic.UpdateView):
     model = Tag
