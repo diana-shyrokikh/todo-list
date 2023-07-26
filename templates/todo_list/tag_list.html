@@ -9,7 +9,7 @@
     <b>Tag List</b>
     <span>
       <a
-        class="w3-right w3-padding w3-blue"
+        class="w3-right w3-padding w3-blue w3-round-xxlarge"
         href="{% url 'todo_list:tag-create' %}"
       >
         Add tag
@@ -20,7 +20,7 @@
 
   <div class="w3-container">
     {% if tag_list %}
-      <table class="w3-table">
+      <table class="w3-table w3-centered">
         <tr>
           <th>Name</th>
           <th>Update</th>
@@ -32,7 +32,7 @@
             <td>
               <a
                   href="{% url 'todo_list:tag-update' pk=tag.id %}"
-                  class="w3-grey w3-padding w3-text-white"
+                  class="w3-grey w3-padding w3-text-white w3-round-xxlarge"
               >
                 Update
               </a>
@@ -40,7 +40,7 @@
             <td>
               <a
                   href="{% url 'todo_list:tag-delete' pk=tag.id %}"
-                  class="w3-grey w3-padding w3-text-white"
+                  class="w3-grey w3-padding w3-text-white w3-round-xxlarge"
               >
                 Delete
               </a>

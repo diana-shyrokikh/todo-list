@@ -10,14 +10,14 @@
     {% csrf_token %}
     <span>
       <input
-        class="w3-margin w3-padding w3-red"
+        class="w3-margin w3-padding w3-red w3-round-xxlarge"
         type="submit"
         value="Yes"
       />
     </span>
     <span>
       <a
-        class="w3-margin w3-padding w3-green"
+        class="w3-margin w3-padding w3-green w3-round-xxlarge"
         href="{% url 'todo_list:tag-list' %}"
       >
         No

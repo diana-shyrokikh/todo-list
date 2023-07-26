@@ -9,7 +9,7 @@
     <b>Todo List</b>
     <span>
       <a
-        class="w3-right w3-padding w3-blue"
+        class="w3-right w3-padding w3-blue w3-round-xxlarge"
         href="{% url 'todo_list:task-create' %}"
       >
         Add task
@@ -26,7 +26,7 @@
           {% if task.is_done %}
             <span>
               <a
-                  class="w3-right w3-padding w3-grey"
+                  class="w3-right w3-padding w3-grey w3-round-xxlarge"
                   href="{% url 'todo_list:change-status' pk=task.id%}"
               >
               Undo
@@ -35,7 +35,7 @@
           {% else %}
             <span>
               <a
-                  class="w3-right w3-padding w3-green"
+                  class="w3-right w3-padding w3-green w3-round-xxlarge"
                   href="{% url 'todo_list:change-status' pk=task.id%}"
               >
               Complete
