@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{#  {% block title %}{% endblock %}#}
+  <title>Todo list | Home</title>
+</head>
+<body>
+  <div>
+    {% block sidebar %}
+      {% include "includes/sidebar.html" %}
+    {% endblock %}
+  </div>
+
+
+  <div style="margin-left: 120px">
+{#    {% block content %}{% endblock %}#}
+    <h1 class="w3-container">
+      <b>Todo List</b>
+      <span>
+        <a
+          class="w3-right w3-padding w3-blue"
+          style="text-decoration: none"
+          href=""
+        >
+          Add task
+        </a>
+      </span>
+
+    </h1>
+
+    <div class="w3-container">
+      {% for task in tasks %}
+        <div>
+          <h3>
+            <b>{{ task.name }}</b>
+            {% if task.is_done %}
+              <span>
+                <a
+                    class="w3-right w3-padding w3-grey"
+                    href=""
+                    style="text-decoration: none"
+                >
+                Undo
+                </a>
+              </span>
+            {% else %}
+              <span>
+                <a
+                    class="w3-right w3-padding w3-green"
+                    href=""
+                    style="text-decoration: none"
+                >
+                Complete
+                </a>
+              </span>
+            {% endif %}
+
+
+
+            {% if task.is_done %}
+              <span class="w3-text-green w3-right w3-padding">Done</span>
+            {% else %}
+              <span class="w3-text-red w3-right w3-padding">Not done</span>
+            {% endif %}
+          </h3>
+        </div>
+        <div>
+          <p>{{ task.created_at }}</p>
+        </div>
+        <div>
+          <p class="w3-text-grey">
+            Tags:
+            {% for tag in task.tags.all %}
+              {{ tag.name }}
+            {% endfor %}
+            <a
+                href=""
+                style="text-decoration: none"
+                class="w3-text-blue"
+            >Update</a>
+            <a
+                href=""
+                style="text-decoration: none"
+                class="w3-text-blue"
+            >Delete</a>
+          </p>
+        </div>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</body>
+</html>
