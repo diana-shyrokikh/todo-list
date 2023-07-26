@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views import View
+from django.urls import reverse_lazy
+from django.views import View, generic
 
+from todo_list.forms import TaskForm
 from todo_list.models import Task
 
 
@@ -27,5 +29,10 @@ class ChangeStatus(View):
 
         return redirect("todo_list:index")
 
+
+class TaskCreateView(generic.CreateView):
+    model = Task
+    form_class = TaskForm
+    success_url = reverse_lazy("todo_list:index")
 
 
