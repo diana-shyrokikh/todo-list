@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-  <h1>DELETE {{ tag.name }}?</h1>
+  <h1>DELETE TAG: {{ tag.name }}?</h1>
   <form action="" method="post">
     {% csrf_token %}
     <span>
