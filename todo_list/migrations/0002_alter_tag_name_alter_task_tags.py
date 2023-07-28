@@ -4,20 +4,21 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('todo_list', '0001_initial'),
+        ("todo_list", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='tag',
-            name='name',
+            model_name="tag",
+            name="name",
             field=models.CharField(max_length=63, unique=True),
         ),
         migrations.AlterField(
-            model_name='task',
-            name='tags',
-            field=models.ManyToManyField(blank=True, null=True, related_name='tasks', to='todo_list.tag'),
+            model_name="task",
+            name="tags",
+            field=models.ManyToManyField(
+                blank=True, null=True, related_name="tasks", to="todo_list.tag"
+            ),
         ),
     ]

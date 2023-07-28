@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('todo_list', '0002_alter_tag_name_alter_task_tags'),
+        ("todo_list", "0002_alter_tag_name_alter_task_tags"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='task',
-            name='tags',
-            field=models.ManyToManyField(related_name='tasks', to='todo_list.tag'),
+            model_name="task",
+            name="tags",
+            field=models.ManyToManyField(related_name="tasks", to="todo_list.tag"),
         ),
     ]

@@ -7,10 +7,8 @@ from todo_list.models import Task, Tag
 
 
 class IndexView(View):
-
     @staticmethod
     def get(request):
-
         tasks = Task.objects.prefetch_related("tags")
 
         context = {
@@ -20,7 +18,6 @@ class IndexView(View):
 
 
 class ChangeStatus(View):
-
     @staticmethod
     def get(request, pk):
         task = get_object_or_404(Task, pk=pk)
