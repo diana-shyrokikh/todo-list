@@ -2,7 +2,7 @@ from django.urls import path
 
 from todo_list.views import (
     ChangeStatus,
-    IndexView,
+    TaskListView,
     TagListView,
     TagCreateView,
     TagUpdateView,
@@ -13,7 +13,7 @@ from todo_list.views import (
 )
 
 urlpatterns = [
-    path("", IndexView.as_view(), name="index"),
+    path("", TaskListView.as_view(), name="task-list"),
     path("tasks/<int:pk>/status/", ChangeStatus.as_view(), name="change-status"),
     path("tasks/create/", TaskCreateView.as_view(), name="task-create"),
     path("tasks/<int:pk>/update/", TaskUpdateView.as_view(), name="task-update"),

@@ -1,5 +1,5 @@
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import View, generic
 
@@ -7,15 +7,10 @@ from todo_list.forms import TaskForm
 from todo_list.models import Task, Tag
 
 
-class IndexView(View):
-    @staticmethod
-    def get(request: HttpRequest) -> HttpResponse:
-        tasks = Task.objects.prefetch_related("tags")
-
-        context = {
-            "tasks": tasks,
-        }
-        return render(request, "todo_list/index.html", context=context)
+class TaskListView(generic.ListView):
+    model = Task
+    context_object_name = "task_list"
+    template_name = "todo_list/task_list.html"
 
 
 class ChangeStatus(View):
@@ -25,24 +20,24 @@ class ChangeStatus(View):
         task.is_done = not task.is_done
         task.save()
 
-        return redirect("todo_list:index")
+        return redirect("todo_list:task-list")
 
 
 class TaskCreateView(generic.CreateView):
     model = Task
     form_class = TaskForm
-    success_url = reverse_lazy("todo_list:index")
+    success_url = reverse_lazy("todo_list:task-list")
 
 
 class TaskUpdateView(generic.UpdateView):
     model = Task
     form_class = TaskForm
-    success_url = reverse_lazy("todo_list:index")
+    success_url = reverse_lazy("todo_list:task-list")
 
 
 class TaskDeleteView(generic.DeleteView):
     model = Task
-    success_url = reverse_lazy("todo_list:index")
+    success_url = reverse_lazy("todo_list:task-list")
 
 
 class TagListView(generic.ListView):
