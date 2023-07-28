@@ -1,3 +1,4 @@
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import View, generic
@@ -8,7 +9,7 @@ from todo_list.models import Task, Tag
 
 class IndexView(View):
     @staticmethod
-    def get(request):
+    def get(request: HttpRequest) -> HttpResponse:
         tasks = Task.objects.prefetch_related("tags")
 
         context = {
@@ -19,7 +20,7 @@ class IndexView(View):
 
 class ChangeStatus(View):
     @staticmethod
-    def get(request, pk):
+    def get(request: HttpRequest, pk: int) -> HttpResponse:
         task = get_object_or_404(Task, pk=pk)
         task.is_done = not task.is_done
         task.save()
