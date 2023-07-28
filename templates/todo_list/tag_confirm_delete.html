@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Delete Tag | Todo List</title>
+{% endblock %}
+
+{% block content %}
+  <h1>DELETE TAG: {{ tag.name }}?</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    <span>
+      <input
+          class="w3-margin w3-padding w3-red w3-round-xxlarge"
+          type="submit"
+          value="Yes"
+      />
+    </span>
+    <span>
+      <a
+          class="w3-margin w3-padding w3-green w3-round-xxlarge"
+          href="{% url 'todo_list:tag-list' %}"
+      >
+        No
+      </a>
+    </span>
+  </form>
+
+{% endblock %}

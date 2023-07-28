@@ -1,0 +1,15 @@
+body {
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#sidebar {
+    width: 100px;
+}
+
+.base-div {
+    margin-left: 120px;
+}
